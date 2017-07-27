@@ -97,4 +97,16 @@ export const projectsContent = {
     ]
 };
 
+export const indexContent = {
+    introduction: "Hi, my name is Chuilian. I'm a master's student at Vanderbilt University studying Computer Science."
+};
+
+export const contactContent = {
+    email: "iloveyoukcl5770@gmail.com",
+    github: "https://github.com/iloveyoukcl5770",
+    linkin: "https://www.linkedin.com/in/chuiliankong/",
+    personalWebsite: "www.chuiliankong.com"
+
+};
+
 
