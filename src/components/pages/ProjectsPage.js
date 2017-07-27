@@ -2,23 +2,23 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 
-import {fetchWork} from "../../actions/actions";
+import {fetchProjects} from "../../actions/actions";
 
-class WorkPage extends Component{
+class ProjectsPage extends Component{
     componentDidMount(){
-        this.props.fetchWork();
+        this.props.fetchProjects();
     }
 
-    renderWorkList(){
-        if(!this.props.work){
+    renderProjectsList(){
+        if(!this.props.projects){
             return (
                 <div>Loading</div>
             )
         }else{
-            return this.props.work.map(entry => {
+            return this.props.projects.map(entry => {
                 return (
                     <li className="list-group-item" key={entry.id}>
-                        <div>{entry.company}</div>
+                        <div>{entry.projectName}</div>
                     </li>
                 )
             });
@@ -29,7 +29,7 @@ class WorkPage extends Component{
         return (
             <div>
                 <ul className="list-group">
-                    {this.renderWorkList()}
+                    {this.renderProjectsList()}
                 </ul>
             </div>
         )
@@ -39,12 +39,12 @@ class WorkPage extends Component{
 
 function mapStateToProps(state){
     return {
-        work: state.work
+        projects: state.projects
     }
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({fetchWork : fetchWork},dispatch);
+    return bindActionCreators({fetchProjects : fetchProjects},dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(WorkPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectsPage);

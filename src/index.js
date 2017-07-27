@@ -7,7 +7,6 @@ import promise from 'redux-promise';
 
 import NavigationBar from './components/NavigationBar.js'
 
-
 import IndexPage from './components/pages/IndexPage.js'
 import EducationPage from './components/pages/EducationPage.js'
 import WorkPage from './components/pages/WorkPage.js'
@@ -15,11 +14,13 @@ import SkillsPage from './components/pages/SkillsPage.js'
 import ProjectsPage from './components/pages/ProjectsPage.js'
 import ContactPage from './components/pages/ContactPage.js'
 
+import rootReducer from './reducers/RootReducer.js'
+
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 const App = () => {
 	return (
-		<Provider>
+		<Provider store={createStoreWithMiddleware(rootReducer)}>
 			<BrowserRouter>
 				<div>
 					<NavigationBar />
