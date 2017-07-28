@@ -17,7 +17,7 @@ class WorkPage extends Component{
         }else{
             return this.props.work.map(entry => {
                 return (
-                    <li className="list-group-item" key={entry.id}>
+                    <li key={entry.id}>
                         <div>{entry.company}</div>
                     </li>
                 )
@@ -28,7 +28,7 @@ class WorkPage extends Component{
     render(){
         return (
             <div>
-                <ul className="list-group">
+                <ul>
                     {this.renderWorkList()}
                 </ul>
             </div>

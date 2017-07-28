@@ -17,7 +17,7 @@ class SkillsPage extends Component{
         }else{
             return this.props.skills.map(entry => {
                 return (
-                    <li className="list-group-item" key={entry.id}>
+                    <li key={entry.id}>
                         <div>{entry.skill}</div>
                     </li>
                 )
@@ -28,7 +28,7 @@ class SkillsPage extends Component{
     render(){
         return (
             <div>
-                <ul className="list-group">
+                <ul>
                     {this.renderSkillsList()}
                 </ul>
             </div>

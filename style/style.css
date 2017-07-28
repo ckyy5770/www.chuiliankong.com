@@ -1,0 +1,8 @@
+.container a:hover {
+    text-decoration: none;
+    color: #F92672;
+}
+
+.container a:focus {
+    text-decoration: none;
+}

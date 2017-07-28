@@ -98,7 +98,7 @@ export const projectsContent = {
 };
 
 export const indexContent = {
-    introduction: "Hi, my name is Chuilian. I'm a master's student at Vanderbilt University studying Computer Science."
+    introduction: "Hi! My name is Chuilian.<br> I'm a master's student at Vanderbilt University studying Computer Science."
 };
 
 export const contactContent = {

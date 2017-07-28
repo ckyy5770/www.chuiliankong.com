@@ -17,7 +17,7 @@ class EducationPage extends Component{
         }else{
             return this.props.education.map(entry => {
                 return (
-                    <li className="list-group-item" key={entry.id}>
+                    <li key={entry.id}>
                         <div>{entry.schoolName}</div>
                     </li>
                 )
@@ -28,7 +28,7 @@ class EducationPage extends Component{
     render(){
         return (
             <div>
-                <ul className="list-group">
+                <ul>
                     {this.renderEducationList()}
                 </ul>
             </div>

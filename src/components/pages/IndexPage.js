@@ -7,6 +7,7 @@ import {fetchIndex} from "../../actions/actions";
 class IndexPage extends Component{
     componentDidMount(){
         this.props.fetchIndex();
+
     }
 
     render(){
@@ -17,7 +18,7 @@ class IndexPage extends Component{
         }else{
             return (
                 <div>
-                    {this.props.index.introduction}
+                    <p>{this.props.index.introduction}</p>
                 </div>
             )
         }
