@@ -12,6 +12,14 @@ export const FETCH_WORK = "FETCH_WORK";
 export const FETCH_INDEX = "FETCH_INDEX";
 export const FETCH_CONTACT = "FETCH_CONTACT";
 
+export const UPDATE_PAGE_NAME = "UPDATE_PAGE_NAME";
+export const INDEX_PAGE_NAME = "index";
+export const EDUCATION_PAGE_NAME = "education";
+export const WORK_PAGE_NAME = "work";
+export const SKILLS_PAGE_NAME = "skills";
+export const PROJECTS_PAGE_NAME = "projects";
+export const CONTACT_PAGE_NAME = "contact";
+
 export function fetchEducation(){
     return {
         type: FETCH_EDUCATION,
@@ -51,5 +59,12 @@ export function fetchContact(){
     return {
         type: FETCH_CONTACT,
         payload: contactContent
+    }
+}
+
+export function updatePageName(pageName){
+    return {
+        type: UPDATE_PAGE_NAME,
+        payload: pageName
     }
 }

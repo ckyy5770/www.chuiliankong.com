@@ -6,6 +6,7 @@ import WorkReducer from "./WorkReducer";
 import SkillsReducer from "./SkillsReducer";
 import IndexReducer from "./IndexReducer";
 import ContactReducer from "./ContactReducer";
+import PageReducer from  "./PageReducer";
 
 const rootReducer = combineReducers({
     education: EducationReducer,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
     skills: SkillsReducer,
     projects: ProjectsReducer,
     index: IndexReducer,
-    contact: ContactReducer
+    contact: ContactReducer,
+    curPageName: PageReducer
 });
 
 export default rootReducer;

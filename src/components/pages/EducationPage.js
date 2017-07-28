@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 
-import {fetchEducation} from "../../actions/actions";
+import {fetchEducation, updatePageName, EDUCATION_PAGE_NAME} from "../../actions/actions";
 
 class EducationPage extends Component{
     componentDidMount(){
         this.props.fetchEducation();
+        this.props.updatePageName(EDUCATION_PAGE_NAME);
     }
 
     renderEducationList(){
@@ -44,7 +45,10 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({fetchEducation : fetchEducation},dispatch);
+    return bindActionCreators({
+        fetchEducation : fetchEducation,
+        updatePageName : updatePageName
+    },dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EducationPage);

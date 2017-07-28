@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 
-import {fetchContact} from "../../actions/actions";
+import {fetchContact, updatePageName, CONTACT_PAGE_NAME} from "../../actions/actions";
 
 class ContactPage extends Component{
     componentDidMount(){
         this.props.fetchContact();
+        this.props.updatePageName(CONTACT_PAGE_NAME);
     }
 
     render(){
@@ -32,7 +33,10 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({fetchContact : fetchContact},dispatch);
+    return bindActionCreators({
+        fetchContact : fetchContact,
+        updatePageName : updatePageName
+    },dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactPage);

@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 
-import {fetchSkills} from "../../actions/actions";
+import {fetchSkills, updatePageName, SKILLS_PAGE_NAME} from "../../actions/actions";
 
 class SkillsPage extends Component{
     componentDidMount(){
         this.props.fetchSkills();
+        this.props.updatePageName(SKILLS_PAGE_NAME);
     }
 
     renderSkillsList(){
@@ -44,7 +45,10 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({fetchSkills : fetchSkills},dispatch);
+    return bindActionCreators({
+        fetchSkills : fetchSkills,
+        updatePageName : updatePageName
+    },dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SkillsPage);

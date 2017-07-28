@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 
-import {fetchIndex} from "../../actions/actions";
+import {fetchIndex, updatePageName, INDEX_PAGE_NAME} from "../../actions/actions";
 
 class IndexPage extends Component{
     componentDidMount(){
         this.props.fetchIndex();
-
+        this.props.updatePageName(INDEX_PAGE_NAME);
     }
 
     render(){
@@ -33,7 +33,10 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({fetchIndex : fetchIndex},dispatch);
+    return bindActionCreators({
+        fetchIndex : fetchIndex,
+        updatePageName : updatePageName
+    },dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(IndexPage);

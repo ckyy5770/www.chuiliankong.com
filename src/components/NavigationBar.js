@@ -1,40 +1,47 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
 import {styleNavBarLinks, styleNavLinkOnSelect} from '../../style/style'
 import {styleNavLinkUnSelect} from '../../style/style'
-import {styleNavBar} from "../../style/style"
 import {styleNavBarBand} from "../../style/style"
 
-export default class NavigationBar extends Component {
-    constructor(props){
-        super(props);
+import {INDEX_PAGE_NAME} from "../actions/actions"
+import {EDUCATION_PAGE_NAME} from "../actions/actions"
+import {WORK_PAGE_NAME} from "../actions/actions"
+import {SKILLS_PAGE_NAME} from "../actions/actions"
+import {PROJECTS_PAGE_NAME} from "../actions/actions"
+import {CONTACT_PAGE_NAME} from "../actions/actions"
 
-        this.state = { selected: ""};
-        this.onNavBarClick = this.onNavBarClick.bind(this);
-    }
-    onNavBarClick(event){
-        if(event){
-            // update state only when a link being clicked
-            if(event.target.name){
-                this.setState({selected: event.target.name});
-            }
+class NavigationBar extends Component {
+    mapStateToStyle(linkName){
+        if(linkName === this.props.curPageName){
+            return styleNavLinkOnSelect;
+        }else{
+            return styleNavLinkUnSelect;
         }
     }
+
     render(){
         return (
-            <div onClick={this.onNavBarClick}>
+            <div>
                 <div className="col-md-4" style={styleNavBarBand}>
-                    <Link name="index" style={this.state.selected === "index" ? styleNavLinkOnSelect: styleNavLinkUnSelect} to="/" >&lt;/&gt;</Link>
+                    <Link name={INDEX_PAGE_NAME} style={this.mapStateToStyle(INDEX_PAGE_NAME)} to="/" >&lt;/&gt;</Link>
                 </div>
                 <div className="col-md-8" style={styleNavBarLinks}>
-                    <Link name="education" style={this.state.selected === "education" ? styleNavLinkOnSelect: styleNavLinkUnSelect} to="/education"> education </Link>
-                    <Link name="work" style={this.state.selected === "work" ? styleNavLinkOnSelect: styleNavLinkUnSelect} to="/work"> work </Link>
-                    <Link name="skills" style={this.state.selected === "skills" ? styleNavLinkOnSelect: styleNavLinkUnSelect} to="/skills"> skills </Link>
-                    <Link name="projects" style={this.state.selected === "projects" ? styleNavLinkOnSelect: styleNavLinkUnSelect} to="/projects"> projects </Link>
-                    <Link name="contact" style={this.state.selected === "contact" ? styleNavLinkOnSelect: styleNavLinkUnSelect} to="/contact"> contact </Link>
+                    <Link name={EDUCATION_PAGE_NAME} style={this.mapStateToStyle(EDUCATION_PAGE_NAME)} to="/education"> education </Link>
+                    <Link name={WORK_PAGE_NAME} style={this.mapStateToStyle(WORK_PAGE_NAME)} to="/work"> work </Link>
+                    <Link name={SKILLS_PAGE_NAME} style={this.mapStateToStyle(SKILLS_PAGE_NAME)} to="/skills"> skills </Link>
+                    <Link name={PROJECTS_PAGE_NAME} style={this.mapStateToStyle(PROJECTS_PAGE_NAME)} to="/projects"> projects </Link>
+                    <Link name={CONTACT_PAGE_NAME} style={this.mapStateToStyle(CONTACT_PAGE_NAME)} to="/contact"> contact </Link>
                 </div>
             </div>
         )
     }
 }
+
+function mapStateToProps(state){
+    return { curPageName: state.curPageName };
+}
+
+export default connect(mapStateToProps)(NavigationBar);
